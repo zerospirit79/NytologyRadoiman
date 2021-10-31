@@ -151,10 +151,10 @@ class RadioTest {
     @Test
     void decreaseNegativeVolume() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(0);
+        radio.setCurrentVolume(-10);
         radio.decreaseVolume();
         int actual = radio.getCurrentVolume();
-        int expect = 10;
+        int expect = 0;
         assertEquals(expect, actual);
     }
 }
