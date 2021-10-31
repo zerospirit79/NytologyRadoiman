@@ -1,30 +1,78 @@
 package ru.netology;
 
 public class Radio {
-//    Номер текущей (прослушиваемой) радиостанции
+    //    Номер текущей (прослушиваемой) радиостанции
     private int currentRadioStation;
+    private int minRadio = 0;
+    private int maxRadio = 9;
+    private int currentVolume;
+    private int minVolume = 0;
+    private int maxVolume = 10;
 
     public int getCurrentRadioStation() {
         return currentRadioStation;
     }
 
     public void setCurrentRadioStation(int currentRadioStation) {
-        if (currentRadioStation < 0) {
+        if (currentRadioStation < minRadio) {
             return;
         }
-        if (currentRadioStation > getMaxRadioStation()) {
+        if (currentRadioStation > maxRadio) {
             return;
         }
         this.currentRadioStation = currentRadioStation;
     }
 
     public void increaseRadioStation() {
-        int newRadioStation = this.currentRadioStation++;
-        setCurrentRadioStation(newRadioStation);
+        if (currentRadioStation == maxRadio) {
+            currentRadioStation = minRadio;
+            return;
+        }
+        this.currentRadioStation += 1;
     }
 
-    public int getMaxRadioStation() {
-        return 9;
+    public void decreaseRadioStation() {
+        if (currentRadioStation == minRadio) {
+            currentRadioStation = maxRadio;
+            return;
+        }
+        this.currentRadioStation -= 1;
     }
 //    Громкость звука
+
+    public int getCurrentVolume() {
+        return currentVolume;
+    }
+
+    public void setCurrentVolume(int currentVolume) {
+        if (currentVolume < minVolume) {
+            return;
+        }
+        if (currentVolume > maxVolume) {
+            return;
+        }
+        this.currentVolume = currentVolume;
+    }
+
+    public void increaseVolume() {
+        if (currentVolume == maxVolume) {
+            return;
+        }
+        if (currentVolume > maxVolume) {
+            currentVolume = maxVolume;
+            return;
+        }
+        return;
+    }
+
+    public void decreaseVolume() {
+        if (currentVolume == minVolume) {
+            return;
+        }
+        if (currentVolume < minVolume) {
+            currentVolume = minVolume;
+            return;
+        }
+        this.currentVolume -= 1;
+    }
 }
